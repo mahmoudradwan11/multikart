@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'La_vie',
+          title: 'Multikart',
           theme: lightTheme,
           themeMode: ThemeMode.light,
           darkTheme: darkTheme,
