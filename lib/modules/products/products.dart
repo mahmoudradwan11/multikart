@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multikart/models/brands/brands.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/shared/components/components.dart';
@@ -29,6 +30,14 @@ class Products extends StatelessWidget {
     TrendItem('Blue Denim Jacket', 'images/6.jpg'),
     TrendItem('Blue Denim Jacket', 'images/7.jpg'),
   ];
+  List<Brands> brandItem = [
+    Brands('images/b6.png'),
+    Brands('images/b2.png'),
+    Brands('images/b3.png'),
+    Brands('images/b4.png'),
+    Brands('images/b5.png'),
+    Brands('images/b1.png'),
+  ];
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MulikartCubit, MultikartStates>(
@@ -38,410 +47,628 @@ class Products extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 110,
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) =>
-                        buildTopItems(topCate[index]),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      width: 10,
-                    ),
-                    itemCount: topCate.length,
-                    scrollDirection: Axis.horizontal,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                height: 110,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) =>
+                      buildTopItems(topCate[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemCount: topCate.length,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  elevation: 5.0,
+                  margin: const EdgeInsets.all(0.8),
+                  child: Stack(
+                    alignment: AlignmentDirectional.centerStart,
+                    children: [
+                      const Image(
+                          image: AssetImage(
+                            'images/card_image.jpg',
+                          ),
+                          height: 250,
+                          width: double.infinity,
+                          fit: BoxFit.cover),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Welcome to Multikart',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              'Flat 50% OFF',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.deepOrange),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text('Free Shipping Till Mid Night'),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            defButton(
+                                function: () {}, text: 'Shop now', width: 150)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    elevation: 5.0,
-                    margin: const EdgeInsets.all(0.8),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Deals of the Days',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    const Spacer(),
+                    MaterialButton(
+                      onPressed: () {},
+                      child: Text(
+                        'See All',
+                        style: TextStyle(color: defaultColor),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
+                      alignment: AlignmentDirectional.topEnd,
                       children: [
-                        const Image(
-                            image: AssetImage(
-                              'images/card_image.jpg',
-                            ),
-                            height: 250,
-                            width: double.infinity,
-                            fit: BoxFit.cover),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[50],
+                          ),
+                          height: 150,
+                          width: double.infinity,
+                          child: Row(
                             children: [
-                              const Text(
-                                'Welcome to Multikart',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: const Image(
+                                    image: AssetImage('images/1.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text(
-                                'Flat 50% OFF',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25,
-                                    color: Colors.deepOrange),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Text('Free Shipping Till Mid Night'),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              defButton(
-                                  function: () {}, text: 'Shop now', width: 150)
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Pink Hoodie t-shirt full',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    'by Mango',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: const [
+                                      Text(
+                                        '\$32.00',
+                                        style: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '\$35.00',
+                                        style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '20%',
+                                        style:
+                                            TextStyle(color: Colors.deepOrange),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )
                             ],
                           ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.favorite_border),
                         ),
                       ],
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[50],
+                          ),
+                          height: 150,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: const Image(
+                                    image: AssetImage('images/2.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'Man Blue Denim Jacket',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    'by Zara',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: const [
+                                      Text(
+                                        '\$32.00',
+                                        style: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        'SAVE 20%',
+                                        style:
+                                            TextStyle(color: Colors.deepOrange),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.favorite_border),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[50],
+                          ),
+                          height: 150,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: const Image(
+                                    image: AssetImage('images/3.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'Pink Hoodie t-shirt full',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Text(
+                                    'by H&M',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: const [
+                                      Text(
+                                        '\$32.00',
+                                        style: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '\$35.00',
+                                        style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '20%',
+                                        style:
+                                            TextStyle(color: Colors.deepOrange),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.favorite_border),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Find Your Style',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Super Summer Sale',
+                      style: TextStyle(color: Colors.grey, fontSize: 20),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Deals of the Days',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                      const Spacer(),
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Text(
-                          'See All',
-                          style: TextStyle(color: defaultColor),
-                        ),
-                      )
-                    ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: defButton(
+                    function: () {},
+                    text: 'Trending Now',
+                    isUpper: false,
+                    width: 150),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Container(
+                  color: Colors.grey[40],
+                  child: GridView.count(
+                    childAspectRatio: 1 / 1.6,
+                    mainAxisSpacing: 1.0,
+                    crossAxisSpacing: 1.0,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    children: List.generate(trendItem.length,
+                        (index) => trendBuild(trendItem[index])),
                   ),
                 ),
-                Column(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Stack(
+                  alignment: AlignmentDirectional.centerEnd,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
+                    Container(
+                      height: 180,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                      ),
+                      child: Row(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey[50],
-                            ),
-                            height: 150,
-                            width: double.infinity,
-                            child: Row(
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: const Image(
-                                      image: AssetImage('images/1.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                Text(
+                                  'Denim Wear',
+                                  style: TextStyle(color: Colors.grey[600]),
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                const Text(
+                                  'Sales Starts In ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Row(
                                   children: [
-                                    const Text(
-                                      'Pink Hoodie t-shirt full',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17,
+                                    Container(
+                                      color: Colors.deepOrange,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: const [
+                                            Text(
+                                              'Hours',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 10,
+                                              ),
+                                            ),
+                                            Text(
+                                              '11',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 10,
+                                      width: 10,
                                     ),
-                                    const Text(
-                                      'by Mango',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
+                                    Container(
+                                      color: Colors.deepOrange,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: const [
+                                            Text(
+                                              'Minutes',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10),
+                                            ),
+                                            Text(
+                                              '33',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 10,
+                                      width: 10,
                                     ),
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          '\$32.00',
-                                          style: TextStyle(
-                                            // fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
+                                    Container(
+                                      color: Colors.deepOrange,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: const [
+                                            Text(
+                                              'Seconds',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10),
+                                            ),
+                                            Text(
+                                              '20',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            )
+                                          ],
                                         ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          '\$35.00',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          '20%',
-                                          style: TextStyle(
-                                              color: Colors.deepOrange),
-                                        ),
-                                      ],
-                                    )
+                                      ),
+                                    ),
                                   ],
                                 )
                               ],
                             ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.favorite_border),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey[50],
-                            ),
-                            height: 150,
-                            width: double.infinity,
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: const Image(
-                                      image: AssetImage('images/2.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Man Blue Denim Jacket',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Text(
-                                      'by Zara',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          '\$32.00',
-                                          style: TextStyle(
-                                            // fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          'SAVE 20%',
-                                          style: TextStyle(
-                                              color: Colors.deepOrange),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.favorite_border),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey[50],
-                            ),
-                            height: 150,
-                            width: double.infinity,
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: const Image(
-                                      image: AssetImage('images/3.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Pink Hoodie t-shirt full',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Text(
-                                      'by H&M',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          '\$32.00',
-                                          style: TextStyle(
-                                            // fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          '\$35.00',
-                                          style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          '20%',
-                                          style: TextStyle(
-                                              color: Colors.deepOrange),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.favorite_border),
-                          ),
-                        ],
-                      ),
+                    const Image(
+                      image: AssetImage('images/banner-image.png'),
+                      height: 120,
+                      fit: BoxFit.cover,
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Find Your Style',
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Biggest Deals on Top Brands',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 110,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => buildBrand(brandItem[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemCount: topCate.length,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Offer Corner',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 100,
+                      color: Colors.grey[200],
+                      child: const Center(
+                          child: Text(
+                        'Under \$ 50.00',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Super Summer Sale',
-                        style: TextStyle(color: Colors.grey, fontSize: 20),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                  child: defButton(
-                      function: () {},
-                      text: 'Trending Now',
-                      isUpper: false,
-                      width: 150),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Container(
-                    color: Colors.grey[40],
-                    child: GridView.count(
-                      childAspectRatio: 1 / 1.6,
-                      mainAxisSpacing: 1.0,
-                      crossAxisSpacing: 1.0,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      crossAxisCount: 2,
-                      children: List.generate(trendItem.length,
-                          (index) => trendBuild(trendItem[index])),
+                      )),
                     ),
                   ),
-                ),
-              ],
-            ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 100,
+                      color: Colors.grey[200],
+                      child: const Center(
+                          child: Text(
+                        'Flat\$ 20 OFF',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      )),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 100,
+                      color: Colors.grey[200],
+                      child: const Center(
+                          child: Text(
+                        'Buy 1 Get 1',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      )),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 100,
+                      color: Colors.grey[200],
+                      child: const Center(
+                          child: Text(
+                        'Upto 50%  Off',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      )),
+                    ),
+                  )
+                ],
+              ),
+            ]),
           ),
         );
       },
@@ -576,6 +803,23 @@ class Products extends StatelessWidget {
                 ],
               ),
             ],
+          ),
+        ),
+      );
+
+  Widget buildBrand(Brands model) => Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Container(
+          //  height:200, width: 300,
+          color: Colors.grey[100],
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image(
+              image: AssetImage(model.image),
+              //fit: BoxFit.cover,
+              //height: 100,
+              width: 150,
+            ),
           ),
         ),
       );
