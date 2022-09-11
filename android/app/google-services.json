@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "127792786098",
+    "project_id": "mulikart-d9cc5",
+    "storage_bucket": "mulikart-d9cc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127792786098:android:adf11c2fc93be6d6a2f7ab",
+        "android_client_info": {
+          "package_name": "com.example.multikart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127792786098-5qfjgskraqlgt5gvmft69s2dak564qtm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.multikart",
+            "certificate_hash": "d73c98ea09abc9074aa8f05ae830e7bd72eb7b45"
+          }
+        },
+        {
+          "client_id": "127792786098-ku9vrd16s5ib525jp1tmd6uiujq93g0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKe3oWC3QryNyLv3LSd5rcwTDTu3Yp1Vw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127792786098-ku9vrd16s5ib525jp1tmd6uiujq93g0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
