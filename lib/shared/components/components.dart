@@ -5,7 +5,7 @@ import 'package:multikart/shared/styles/colors.dart';
 Widget builtDivider() => Padding(
   padding: const EdgeInsets.symmetric(horizontal: 20),
   child: Container(
-    color: Colors.grey,
+    color: Colors.white,
     height: 1.0,
     width: double.infinity,
   ),
