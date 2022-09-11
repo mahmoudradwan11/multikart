@@ -21,6 +21,7 @@ class RegisterScreen extends StatelessWidget {
           if(state is CreateUserSuccessState)
           {
             navigateAndFinish(context,const Home());
+            showToast('User Created Successfully', ToastStates.SUCCESS);
           }
         },
         builder:(context,state){

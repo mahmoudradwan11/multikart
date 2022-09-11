@@ -23,6 +23,7 @@ class LoginScreen extends StatelessWidget {
                   key:'uId',
                   value:state.uid,
                 ).then((value){
+                  showToast('Login Successfully', ToastStates.SUCCESS);
                   navigateAndFinish(context,const Home());
                 });
               }
