@@ -33,7 +33,7 @@ Widget textField({
         labelText: label,
         labelStyle: labelStyle,
         enabledBorder: OutlineInputBorder(
-          borderSide:  BorderSide(color: defaultColor),
+          borderSide:  const BorderSide(color: defaultColor),
           borderRadius: BorderRadius.circular(30),
         ),
         prefixIcon: Icon(
@@ -63,7 +63,7 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
 Widget defButton({
   double width = double.infinity,
   double heigth = 40.0,
-  // Color background = ,
+  var background = defaultColor,
   bool isUpper = true,
   required var function,
   required String text,
@@ -72,7 +72,7 @@ Widget defButton({
       height: heigth,
       width: width,
       decoration: BoxDecoration(
-        color: defaultColor,
+        color: background,
         //borderRadius: BorderRadius.circular(30),
       ),
       child: MaterialButton(
