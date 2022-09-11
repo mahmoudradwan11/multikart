@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/layout/home.dart';
+import 'package:multikart/modules/register/register.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/network/local/cache_helper.dart';
 
@@ -119,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                                 textButton(
                                     text: 'Register ',
                                     function: () {
-                                     // navigateTo(context, RegisterScreen());
+                                      navigateTo(context, RegisterScreen());
                                     }),
                               ],
                             ),
