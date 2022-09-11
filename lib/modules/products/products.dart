@@ -621,8 +621,8 @@ class Products extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 'Hours',
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -630,8 +630,8 @@ class Products extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                '11',
-                                                style: TextStyle(
+                                                '${DateTime.now().hour-12}',
+                                                style:const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -648,16 +648,16 @@ class Products extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 'Minutes',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 10),
                                               ),
                                               Text(
-                                                '33',
-                                                style: TextStyle(
+                                                '${DateTime.now().minute}',
+                                                style:const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -674,16 +674,16 @@ class Products extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
-                                            children: const [
-                                              Text(
+                                            children: [
+                                              const Text(
                                                 'Seconds',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 10),
                                               ),
                                               Text(
-                                                '20',
-                                                style: TextStyle(
+                                                '${DateTime.now().second}',
+                                                style:const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
