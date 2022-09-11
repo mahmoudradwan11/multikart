@@ -60,7 +60,6 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
   MaterialPageRoute(builder: (context) => widget),
       (Route<dynamic> route) => false,
 );
-
 Widget defButton({
   double width = double.infinity,
   double heigth = 40.0,
