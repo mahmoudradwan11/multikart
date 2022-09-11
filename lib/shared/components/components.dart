@@ -33,7 +33,7 @@ Widget textField({
       decoration: InputDecoration(
         labelText: label,
         labelStyle: labelStyle,
-        enabledBorder: OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide:  const BorderSide(color: defaultColor),
           borderRadius: BorderRadius.circular(30),
         ),
