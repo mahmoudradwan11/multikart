@@ -3,9 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/models/brands/brands.dart';
+import 'package:multikart/models/card/card.dart';
+import 'package:multikart/models/product_model/product_model.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/models/user/user.dart';
+import 'package:multikart/modules/Items/items.dart';
 import 'package:multikart/modules/card/cart.dart';
 import 'package:multikart/modules/category/cate.dart';
 import 'package:multikart/modules/login/login.dart';
@@ -41,12 +44,6 @@ class MulikartCubit extends Cubit<MultikartStates> {
     ),
     BottomNavigationBarItem(
       icon: Icon(
-        Icons.production_quantity_limits_sharp,
-      ),
-      label: 'CART',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(
         Icons.favorite_border,
       ),
       label: 'WISHLIST',
@@ -61,9 +58,13 @@ class MulikartCubit extends Cubit<MultikartStates> {
   List<Widget> screens = [
     Products(),
     const Cate(),
-    const Cart(),
     const Wish(),
     Profile(),
+  ];
+  List<ProductModel>products = [
+    ProductModel('Shirt','mango','images/1.jpg','S',1, 32, 35),
+    ProductModel('jeans','mango','images/2.jpg','S',1, 32, 35),
+    ProductModel('germany','mango','images/3.jpg','S',1, 32, 35),
   ];
   List<TopCate> topCate = [
     TopCate(
@@ -213,7 +214,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(ErrorGetWishState());
     });
   }
-  void deleteData({required int id}) async {
+  void deleteWish({required int id}) async {
     await database!
         .rawDelete('DELETE FROM Wish WHERE id= ?', [id]).then((value) {
       getWish(database);

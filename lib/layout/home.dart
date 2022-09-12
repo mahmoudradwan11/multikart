@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multikart/modules/Items/items.dart';
+import 'package:multikart/modules/products/products.dart';
+import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
+
+import '../modules/card/cart.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -53,7 +58,35 @@ class Home extends StatelessWidget {
                       onPressed: () {}, icon: const Icon(Icons.shopping_cart))),
             ],
           ),
-          drawer: const Drawer(),
+          drawer: Drawer(
+            child: ListView(
+              children: [
+                UserAccountsDrawerHeader(
+                  accountName:
+                      Text('${cubit.userModel!.name}'),
+                  accountEmail: Text('${cubit.userModel!.email}'),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage('${cubit.userModel!.image}'),
+                  ),
+                ),
+                ListTile(
+                  title: const Text('My Card'),
+                  leading: const Icon(Icons.card_giftcard),
+                  onTap: () {
+                    navigateTo(context, const CardScreen());
+                  },
+                ),
+                ListTile(
+                  title: const Text('Products'),
+                  leading: const Icon(Icons.production_quantity_limits_sharp),
+                  onTap: () {
+                    navigateTo(context, const Items());
+                  },
+                ),
+
+              ],
+            ),
+          ),
           body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             items: cubit.items,
@@ -63,7 +96,6 @@ class Home extends StatelessWidget {
             },
           ),
         );
-
       },
     );
   }
