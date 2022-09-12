@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/modules/Items/items.dart';
-import 'package:multikart/modules/products/products.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
@@ -63,10 +62,10 @@ class Home extends StatelessWidget {
               children: [
                 UserAccountsDrawerHeader(
                   accountName:
-                      Text('${cubit.userModel!.name}'),
-                  accountEmail: Text('${cubit.userModel!.email}'),
+                      Text('${cubit.name}'),
+                  accountEmail: Text('${cubit.email}'),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: NetworkImage('${cubit.userModel!.image}'),
+                    backgroundImage: NetworkImage('${cubit.image}'),
                   ),
                 ),
                 ListTile(

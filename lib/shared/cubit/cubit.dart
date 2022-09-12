@@ -27,6 +27,9 @@ class MulikartCubit extends Cubit<MultikartStates> {
   int currentIndex = 0;
   Database? database;
   UserData? userModel;
+  String? name;
+  String? email;
+  String? image;
   List<Map> wish = [];
   List<Map> card = [];
   List<BottomNavigationBarItem> items = const [
@@ -132,6 +135,9 @@ class MulikartCubit extends Cubit<MultikartStates> {
     FirebaseFirestore.instance.collection('Users').doc(uId).get().then((value) {
       print(value.data());
       userModel = UserData.fromJson(value.data()!);
+      name = userModel!.name;
+      image = userModel!.image;
+      email = userModel!.email;
       emit(GetUserSuccessState());
     }).catchError((error) {
       print(error);
