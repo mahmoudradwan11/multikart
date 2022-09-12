@@ -9,3 +9,26 @@ class GetUserErrorState extends MultikartStates{
 
   GetUserErrorState(this.error);
 }
+class CreateDataBaseState extends MultikartStates {}
+
+class ErrorCreateDataBaseState extends MultikartStates {}
+
+class InsertWishState extends MultikartStates{}
+
+class ErrorInsertWishState extends MultikartStates{}
+
+class GetWishState extends MultikartStates {}
+
+class ErrorGetWishState extends MultikartStates {}
+
+class InsertCartState extends MultikartStates{}
+
+class ErrorInsertCardState extends MultikartStates{}
+
+class GetCardState extends MultikartStates{}
+
+class ErrorGetCardState extends MultikartStates{}
+
+class DeleteWishState extends MultikartStates {}
+
+class DeleteCardState extends MultikartStates{}
