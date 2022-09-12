@@ -63,9 +63,15 @@ class MulikartCubit extends Cubit<MultikartStates> {
     Profile(),
   ];
   List<TopCate> topCate = [
-    TopCate('Kids', 'images/kids.png',),
+    TopCate(
+      'Kids',
+      'images/kids.png',
+    ),
     TopCate('Beauty', 'images/beauty.png'),
-    TopCate('Footwear', 'images/shoes.png',),
+    TopCate(
+      'Footwear',
+      'images/shoes.png',
+    ),
     TopCate('Jewelry', 'images/jewelry.png'),
     TopCate('Women', 'images/women.png'),
     TopCate('Men', 'images/men.png'),
@@ -84,19 +90,11 @@ class MulikartCubit extends Cubit<MultikartStates> {
     Brands('images/b5.png'),
     Brands('images/b1.png'),
   ];
-  List<CategoryModel>cateItems = [
-    CategoryModel('sale','upto 50% off on all products','images/sale.png'),
-    CategoryModel('WOMEN','t-shirts,tops,bottoms','images/wom.png'),
-    CategoryModel('MEN','jackets,jeans,denims','images/me.png'),
-    CategoryModel('KIDS','clothing,toys,books','images/kid.png'),
-    CategoryModel('BEAUTY','skincare,haircare,makeup','images/bea.png'),
-    CategoryModel('FOOTWEAR','shoes,sandle,activewear','images/footwear.png'),
-    CategoryModel('JEWELERY','necklace,chains,earrings','images/jew.png'),
-  ];
   void changeScreen(index) {
     currentIndex = index;
     emit(ChangeScreen());
   }
+
   void updateUser({
     required String name,
     required String phone,
@@ -125,6 +123,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(UserUpdateError());
     });
   }
+
   void getUserData() {
     FirebaseFirestore.instance.collection('Users').doc(uId).get().then((value) {
       print(value.data());
@@ -135,11 +134,11 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(GetUserErrorState(error.toString()));
     });
   }
-  void signOut(context)
-  {
-    CacheHelper.removeData(key:'uId').then((value){
-      if(value){
-        navigateAndFinish(context,LoginScreen());
+
+  void signOut(context) {
+    CacheHelper.removeData(key: 'uId').then((value) {
+      if (value) {
+        navigateAndFinish(context, LoginScreen());
       }
     });
   }
