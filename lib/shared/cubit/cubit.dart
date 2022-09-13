@@ -23,6 +23,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
   int currentIndex = 0;
   Database? database;
   UserData? userModel;
+  bool dark = true;
   String? name;
   String? email;
   String? image;
@@ -62,16 +63,16 @@ class MulikartCubit extends Cubit<MultikartStates> {
     const Wish(),
     Profile(),
   ];
-  List<ProductModel>products = [
-    ProductModel('Pink-Shirt','Amazon','images/1.jpg',100,130),
-    ProductModel('Jacket','Noon','images/2.jpg',230, 290),
-    ProductModel('Orange hat ','H&M','images/3.jpg',50, 75),
-    ProductModel('Pullover','American Eagle','images/4.jpg',290, 350),
-    ProductModel('Sweet-Shirt','We walk','images/5.jpg',200, 240),
-    ProductModel('Dress','My sword','images/6.jpg',150, 190),
-    ProductModel('Sweet-Shirt','Max Fashion','images/7.jpg',210, 250),
-    ProductModel('Kids Collection','Nike','images/8.jpg',420, 480),
-    ProductModel('Pocket','Shi In','images/9.jpg',120, 165),
+  List<ProductModel> products = [
+    ProductModel('Pink-Shirt', 'Amazon', 'images/1.jpg', 100, 130),
+    ProductModel('Jacket', 'Noon', 'images/2.jpg', 230, 290),
+    ProductModel('Orange hat ', 'H&M', 'images/3.jpg', 50, 75),
+    ProductModel('Pullover', 'American Eagle', 'images/4.jpg', 290, 350),
+    ProductModel('Sweet-Shirt', 'We walk', 'images/5.jpg', 200, 240),
+    ProductModel('Dress', 'My sword', 'images/6.jpg', 150, 190),
+    ProductModel('Sweet-Shirt', 'Max Fashion', 'images/7.jpg', 210, 250),
+    ProductModel('Kids Collection', 'Nike', 'images/8.jpg', 420, 480),
+    ProductModel('Pocket', 'Shi In', 'images/9.jpg', 120, 165),
   ];
   List<TopCate> topCate = [
     TopCate(
@@ -101,18 +102,31 @@ class MulikartCubit extends Cubit<MultikartStates> {
     Brands('images/b5.png'),
     Brands('images/b1.png'),
   ];
+
   void changeScreen(index) {
     currentIndex = index;
     emit(ChangeScreen());
   }
-  void selectSize(size)
-  {
-     selectedSize = size;
-     emit(ChangeSize());
+
+  void changeMode({bool? fromShared}) {
+    if (fromShared != null) {
+      dark = fromShared;
+      emit(ChangeAppMode());
+    } else {
+      dark = !dark;
+      CacheHelper.putBoolData(key: 'mode', value: dark).then((value) {
+        emit(ChangeAppMode());
+      });
+    }
   }
-  void selectQuantity(quantity)
-  {
-    selectedQuantity =  quantity;
+
+  void selectSize(size) {
+    selectedSize = size;
+    emit(ChangeSize());
+  }
+
+  void selectQuantity(quantity) {
+    selectedQuantity = quantity;
     emit(ChangeQuantity());
   }
 
@@ -172,7 +186,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       print('DataBase Created');
       database
           .execute(
-          'create table Wish(id INTEGER PRIMARY KEY,name TEXT , brand TEXT , price INT,image TEXT,oldPrice INT)')
+              'create table Wish(id INTEGER PRIMARY KEY,name TEXT , brand TEXT , price INT,image TEXT,oldPrice INT)')
           .then((value) {
         print('Table 1 Created');
       }).catchError((error) {
@@ -180,7 +194,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       });
       database
           .execute(
-          'create table Card(id INTEGER PRIMARY KEY,name TEXT , brand TEXT,image TEXT,price INT,oldPrice INT, qty INT ,size TEXT)')
+              'create table Card(id INTEGER PRIMARY KEY,name TEXT , brand TEXT,image TEXT,price INT,oldPrice INT, qty INT ,size TEXT)')
           .then((value) {
         print('Table 2 Created');
       }).catchError((error) {
@@ -198,18 +212,17 @@ class MulikartCubit extends Cubit<MultikartStates> {
     });
   }
 
-  Future<void> insertWish(
-      {
-        required String name,
-        required String brand,
-        required int price,
-        required String image,
-        required int oldPrice,
-      }) async {
+  Future<void> insertWish({
+    required String name,
+    required String brand,
+    required int price,
+    required String image,
+    required int oldPrice,
+  }) async {
     database!.transaction((txn) {
       return txn
           .rawInsert(
-          'INSERT INTO Wish(name,brand,price,image,oldPrice) VALUES("$name","$brand","$price","$image","$oldPrice")')
+              'INSERT INTO Wish(name,brand,price,image,oldPrice) VALUES("$name","$brand","$price","$image","$oldPrice")')
           .then((value) {
         print('$value Inserted Successfully');
         emit(InsertWishState());
@@ -221,6 +234,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       });
     });
   }
+
   void getWish(database) {
     wish = [];
     database!.rawQuery('select * from Wish').then((value) {
@@ -234,6 +248,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(ErrorGetWishState());
     });
   }
+
   void deleteWish({required int id}) async {
     await database!
         .rawDelete('DELETE FROM Wish WHERE id= ?', [id]).then((value) {
@@ -242,19 +257,19 @@ class MulikartCubit extends Cubit<MultikartStates> {
     });
   }
 
-  Future<void> insertCard(
-      {required String name,
-        required String brand,
-        required String image,
-        required String size,
-        required int price,
-        required int qty,
-        required int oldPrice,
-      }) async {
+  Future<void> insertCard({
+    required String name,
+    required String brand,
+    required String image,
+    required String size,
+    required int price,
+    required int qty,
+    required int oldPrice,
+  }) async {
     database!.transaction((txn) {
       return txn
           .rawInsert(
-          'INSERT INTO Card(name,brand,image,price,oldPrice,qty,size) VALUES("$name","$brand","$image","$price","$oldPrice","$qty","$size")')
+              'INSERT INTO Card(name,brand,image,price,oldPrice,qty,size) VALUES("$name","$brand","$image","$price","$oldPrice","$qty","$size")')
           .then((value) {
         print('$value Inserted Successfully');
         emit(InsertCartState());
@@ -280,6 +295,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(ErrorGetCardState());
     });
   }
+
   void deleteCard({required int id}) async {
     await database!
         .rawDelete('DELETE FROM Card WHERE id= ?', [id]).then((value) {

@@ -36,3 +36,5 @@ class DeleteCardState extends MultikartStates{}
 class ChangeSize extends MultikartStates{}
 
 class ChangeQuantity extends MultikartStates{}
+
+class ChangeAppMode extends MultikartStates{}

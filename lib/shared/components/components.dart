@@ -11,6 +11,18 @@ Widget builtDivider() => Padding(
   ),
 );
 
+Widget logo() {
+  return Stack(
+    children: const [
+       Center(
+        child: Image(
+          image: AssetImage('images/title.png'),
+        ),
+      ),
+    ],
+  );
+}
+
 
 Widget textField({
   required TextEditingController controller,

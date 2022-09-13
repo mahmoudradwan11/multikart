@@ -32,7 +32,7 @@ class Layout extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-               // const Text('ultikart'),
+                // const Text('ultikart'),
               ],
             ),
             actions: [
@@ -61,12 +61,29 @@ class Layout extends StatelessWidget {
             child: ListView(
               children: [
                 UserAccountsDrawerHeader(
-                  accountName:
-                      Text('${cubit.name}'),
+                  accountName: Text('${cubit.name}'),
                   accountEmail: Text('${cubit.email}'),
                   currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage('${cubit.image}'),
                   ),
+                ),
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 72),
+                      child: Text(
+                        'Dark',
+                        style: TextStyle(fontFamily: 'Jannah', fontSize: 20),
+                      ),
+                    ),
+                    const Spacer(),
+                    Switch(
+                      value: cubit.dark,
+                      onChanged: (val) {
+                        cubit.changeMode();
+                      },
+                    ),
+                  ],
                 ),
                 ListTile(
                   title: const Text('My Card'),
@@ -82,7 +99,6 @@ class Layout extends StatelessWidget {
                     navigateTo(context, const Products());
                   },
                 ),
-
               ],
             ),
           ),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'colors.dart';
+
 ThemeData lightTheme = ThemeData(
-  primarySwatch:defaultColor,
+  primarySwatch: defaultColor,
   appBarTheme: const AppBarTheme(
     titleSpacing: 20.0,
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -16,18 +17,18 @@ ThemeData lightTheme = ThemeData(
       color: Colors.black,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
-     // fontFamily: 'Jannah'
+      // fontFamily: 'Jannah'
     ),
     iconTheme: IconThemeData(
       color: Colors.black,
     ),
   ),
-  floatingActionButtonTheme:FloatingActionButtonThemeData(
-    backgroundColor:defaultColor,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: defaultColor,
   ),
-  bottomNavigationBarTheme:BottomNavigationBarThemeData(
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    selectedItemColor:defaultColor,
+    selectedItemColor: defaultColor,
     elevation: 20.0,
     backgroundColor: Colors.white,
   ),
@@ -46,8 +47,8 @@ ThemeData lightTheme = ThemeData(
   ),
   scaffoldBackgroundColor: Colors.white,
 );
-ThemeData darkTheme =  ThemeData(
-  primarySwatch:Colors.pink,
+ThemeData darkTheme = ThemeData(
+  primarySwatch: defaultColor,
   appBarTheme: AppBarTheme(
     titleSpacing: 20.0,
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -65,25 +66,20 @@ ThemeData darkTheme =  ThemeData(
       color: Colors.white,
     ),
   ),
-  floatingActionButtonTheme:FloatingActionButtonThemeData(
-    backgroundColor:defaultColor,
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: defaultColor,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    selectedItemColor:defaultColor,
+    selectedItemColor: defaultColor,
     unselectedItemColor: Colors.grey,
     elevation: 20.0,
     backgroundColor: HexColor('333739'),
   ),
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 18.0,
-      color: Colors.white,
-    ),
     subtitle1: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 14.0,
+      fontSize: 25.0,
       color: Colors.white,
       height: 1.3,
     ),
