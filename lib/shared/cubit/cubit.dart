@@ -1,15 +1,11 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/models/brands/brands.dart';
-import 'package:multikart/models/card/card.dart';
 import 'package:multikart/models/product_model/product_model.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/models/user/user.dart';
-import 'package:multikart/modules/Items/items.dart';
-import 'package:multikart/modules/card/cart.dart';
 import 'package:multikart/modules/category/cate.dart';
 import 'package:multikart/modules/login/login.dart';
 import 'package:multikart/modules/products/products.dart';
@@ -30,6 +26,8 @@ class MulikartCubit extends Cubit<MultikartStates> {
   String? name;
   String? email;
   String? image;
+  String? selectedSize = 'S';
+  int? selectedQuantity = 1;
   List<Map> wish = [];
   List<Map> card = [];
   List<BottomNavigationBarItem> items = const [
@@ -65,9 +63,15 @@ class MulikartCubit extends Cubit<MultikartStates> {
     Profile(),
   ];
   List<ProductModel>products = [
-    ProductModel('Shirt','mango','images/1.jpg','S',1, 32, 35),
-    ProductModel('jeans','mango','images/2.jpg','S',1, 32, 35),
-    ProductModel('germany','mango','images/3.jpg','S',1, 32, 35),
+    ProductModel('Pink-Shirt','Amazon','images/1.jpg',100,130),
+    ProductModel('Jacket','Noon','images/2.jpg',230, 290),
+    ProductModel('Orange hat ','H&M','images/3.jpg',50, 75),
+    ProductModel('Pullover','American Eagle','images/4.jpg',290, 350),
+    ProductModel('Sweet-Shirt','We walk','images/5.jpg',200, 240),
+    ProductModel('Dress','My sword','images/6.jpg',150, 190),
+    ProductModel('Sweet-Shirt','Max Fashion','images/7.jpg',210, 250),
+    ProductModel('Kids Collection','Nike','images/8.jpg',420, 480),
+    ProductModel('Pocket','Shi In','images/9.jpg',120, 165),
   ];
   List<TopCate> topCate = [
     TopCate(
@@ -100,6 +104,16 @@ class MulikartCubit extends Cubit<MultikartStates> {
   void changeScreen(index) {
     currentIndex = index;
     emit(ChangeScreen());
+  }
+  void selectSize(size)
+  {
+     selectedSize = size;
+     emit(ChangeSize());
+  }
+  void selectQuantity(quantity)
+  {
+    selectedQuantity =  quantity;
+    emit(ChangeQuantity());
   }
 
   void updateUser({

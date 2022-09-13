@@ -4,6 +4,7 @@ import 'package:multikart/models/product_model/product_model.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
+import 'package:multikart/shared/styles/colors.dart';
 
 class Items extends StatelessWidget {
   const Items({Key? key}) : super(key: key);
@@ -41,7 +42,7 @@ class Items extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.grey[50],
               ),
-              height: 150,
+              height: 200,
               width: double.infinity,
               child: Row(
                 children: [
@@ -81,39 +82,65 @@ class Items extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Text(
+                        'Price : ${model.price}',
+                        style: const TextStyle(
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Old-Price : ${model.oldPrice}',
+                        style: const TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
                         children: [
-                          Text(
-                            'Price : ${model.price}',
-                            style: const TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          Container(
+                            height: 50,
+                            width: 50,
+                            child: DropdownButton(
+                              items: ["S", "M", "L", "Xl"]
+                                  .map((e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text(e),
+                                      ))
+                                  .toList(),
+                              onChanged: (value) {
+                                MulikartCubit.get(context).selectSize(value);
+                              },
+                              value: MulikartCubit.get(context).selectedSize,
                             ),
+                            //color: Colors.yellow,
                           ),
                           const SizedBox(
-                            height: 5,
+                            width: 10,
                           ),
-                          Text(
-                            'Old-Price : ${model.oldPrice}',
-                            style: const TextStyle(
-                              decoration: TextDecoration.lineThrough,
-                              color: Colors.grey,
+                          Container(
+                            height: 50,
+                            width: 50,
+                            child: DropdownButton(
+                              items: [1, 2, 3, 4, 5, 6, 7, 8]
+                                  .map((e) => DropdownMenuItem(
+                                        value: e,
+                                        child: Text('$e'),
+                                      ))
+                                  .toList(),
+                              onChanged: (value) {
+                                MulikartCubit.get(context)
+                                    .selectQuantity(value);
+                              },
+                              value:
+                                  MulikartCubit.get(context).selectedQuantity,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Quantity : ${model.qty}',
-                            style: const TextStyle(color: Colors.deepOrange),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Size : ${model.size}',
-                            style: const TextStyle(color: Colors.deepOrange),
                           ),
                         ],
                       )
@@ -124,23 +151,23 @@ class Items extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: defButton(
-                function: () {
+              child: IconButton(
+                onPressed: () {
                   MulikartCubit.get(context).insertCard(
                     name: model.name,
                     brand: model.brand,
                     image: model.image,
-                    size: model.size,
+                    size: MulikartCubit.get(context).selectedSize!,
                     price: model.price,
-                    qty: model.qty,
+                    qty: MulikartCubit.get(context).selectedQuantity!,
                     oldPrice: model.oldPrice,
                   );
                   showToast('Added Successfully', ToastStates.SUCCESS);
                 },
-                text: 'Add',
-                width: 100,
-                heigth: 25,
-                isUpper: false,
+                icon: const Icon(
+                  Icons.add,
+                  color: defaultColor,
+                ),
               ),
             ),
           ],
