@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multikart/modules/Items/items.dart';
+import 'package:multikart/modules/products/Product.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
 
 import '../modules/card/cart.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Layout extends StatelessWidget {
+  const Layout({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MulikartCubit, MultikartStates>(
@@ -79,7 +79,7 @@ class Home extends StatelessWidget {
                   title: const Text('Products'),
                   leading: const Icon(Icons.production_quantity_limits_sharp),
                   onTap: () {
-                    navigateTo(context, const Items());
+                    navigateTo(context, const Products());
                   },
                 ),
 

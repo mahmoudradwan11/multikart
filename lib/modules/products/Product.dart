@@ -6,8 +6,8 @@ import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
 import 'package:multikart/shared/styles/colors.dart';
 
-class Items extends StatelessWidget {
-  const Items({Key? key}) : super(key: key);
+class Products extends StatelessWidget {
+  const Products({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MulikartCubit, MultikartStates>(

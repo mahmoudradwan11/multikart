@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multikart/layout/home.dart';
+import 'package:multikart/layout/layout.dart';
 import 'package:multikart/shared/components/constants.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
@@ -18,7 +18,7 @@ void main()async
   print('Uid = $uId');
   Widget? widget;
   if (uId != null) {
-    widget = const Home();
+    widget = const Layout();
   } else {
     widget = LoginScreen();
   }

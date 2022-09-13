@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multikart/layout/home.dart';
+import 'package:multikart/layout/layout.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -20,7 +20,7 @@ class RegisterScreen extends StatelessWidget {
         listener:(context,state){
           if(state is CreateUserSuccessState)
           {
-            navigateAndFinish(context,const Home());
+            navigateAndFinish(context,const Layout());
             showToast('User Created Successfully', ToastStates.SUCCESS);
           }
         },

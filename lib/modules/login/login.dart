@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multikart/layout/home.dart';
+import 'package:multikart/layout/layout.dart';
 import 'package:multikart/modules/register/register.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/network/local/cache_helper.dart';
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                   value:state.uid,
                 ).then((value){
                   showToast('Login Successfully', ToastStates.SUCCESS);
-                  navigateAndFinish(context,const Home());
+                  navigateAndFinish(context,const Layout());
                 });
               }
             },

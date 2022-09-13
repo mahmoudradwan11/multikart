@@ -9,8 +9,8 @@ import 'package:multikart/shared/cubit/states.dart';
 import 'package:multikart/shared/styles/colors.dart';
 
 // this Screen is Written by Eng Mahmoud Radwan
-class Products extends StatelessWidget {
-  Products({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  Home({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MulikartCubit, MultikartStates>(
@@ -103,7 +103,7 @@ class Products extends StatelessWidget {
                       const Spacer(),
                       MaterialButton(
                         onPressed: () {},
-                        child: Text(
+                        child:const Text(
                           'See All',
                           style: TextStyle(color: defaultColor),
                         ),

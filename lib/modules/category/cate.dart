@@ -43,7 +43,7 @@ class Cate extends StatelessWidget {
                                 height: 10,
                               ),
                               Text(
-                                'upto 50% off on all products',
+                                'upto 50% off on all product',
                                 style: TextStyle(fontFamily: 'Jannah'),
                               ),
                             ],

@@ -7,8 +7,8 @@ import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/models/user/user.dart';
 import 'package:multikart/modules/category/cate.dart';
+import 'package:multikart/modules/home/home.dart';
 import 'package:multikart/modules/login/login.dart';
-import 'package:multikart/modules/products/products.dart';
 import 'package:multikart/modules/profile/profile.dart';
 import 'package:multikart/modules/wish/wish.dart';
 import 'package:multikart/shared/components/components.dart';
@@ -57,7 +57,7 @@ class MulikartCubit extends Cubit<MultikartStates> {
     ),
   ];
   List<Widget> screens = [
-    Products(),
+    Home(),
     const Cate(),
     const Wish(),
     Profile(),
