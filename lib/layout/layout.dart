@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multikart/modules/about_us/about.dart';
 import 'package:multikart/modules/products/Product.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
@@ -99,6 +100,14 @@ class Layout extends StatelessWidget {
                     navigateTo(context, const Products());
                   },
                 ),
+                ListTile(
+                  title: const Text('About Us'),
+                  leading: const Icon(Icons.interpreter_mode_rounded),
+                  onTap: () {
+                    navigateTo(context, const AboutUs());
+                  },
+                ),
+
               ],
             ),
           ),

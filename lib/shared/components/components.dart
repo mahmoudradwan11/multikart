@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:multikart/models/brands/brands.dart';
 import 'package:multikart/shared/styles/colors.dart';
 
 Widget builtDivider() => Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 20),
-  child: Container(
-    color: Colors.white,
-    height: 1.0,
-    width: double.infinity,
-  ),
-);
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Container(
+        color: Colors.white,
+        height: 1.0,
+        width: double.infinity,
+      ),
+    );
 
 Widget logo() {
   return Stack(
     children: const [
-       Center(
+      Center(
         child: Image(
           image: AssetImage('images/title.png'),
         ),
@@ -23,6 +24,22 @@ Widget logo() {
   );
 }
 
+Widget buildBrand(Brands model) => Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+        //  height:200, width: 300,
+        color: Colors.grey[100],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Image(
+            image: AssetImage(model.image),
+            //fit: BoxFit.cover,
+            //height: 100,
+            width: 150,
+          ),
+        ),
+      ),
+    );
 
 Widget textField({
   required TextEditingController controller,
@@ -46,7 +63,7 @@ Widget textField({
         labelText: label,
         labelStyle: labelStyle,
         border: OutlineInputBorder(
-          borderSide:  const BorderSide(color: defaultColor),
+          borderSide: const BorderSide(color: defaultColor),
           borderRadius: BorderRadius.circular(30),
         ),
         prefixIcon: Icon(
@@ -66,12 +83,11 @@ Widget textField({
 void navigateTo(context, widget) =>
     Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
-
 void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
-  context,
-  MaterialPageRoute(builder: (context) => widget),
+      context,
+      MaterialPageRoute(builder: (context) => widget),
       (Route<dynamic> route) => false,
-);
+    );
 Widget defButton({
   double width = double.infinity,
   double heigth = 40.0,

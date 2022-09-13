@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:multikart/models/brands/brands.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/shared/components/components.dart';
@@ -103,7 +102,7 @@ class Home extends StatelessWidget {
                       const Spacer(),
                       MaterialButton(
                         onPressed: () {},
-                        child:const Text(
+                        child: const Text(
                           'See All',
                           style: TextStyle(color: defaultColor),
                         ),
@@ -630,8 +629,8 @@ class Home extends StatelessWidget {
                                                 ),
                                               ),
                                               Text(
-                                                '${DateTime.now().hour-12}',
-                                                style:const TextStyle(
+                                                '${DateTime.now().hour - 12}',
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -657,7 +656,7 @@ class Home extends StatelessWidget {
                                               ),
                                               Text(
                                                 '${DateTime.now().minute}',
-                                                style:const TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -683,7 +682,7 @@ class Home extends StatelessWidget {
                                               ),
                                               Text(
                                                 '${DateTime.now().second}',
-                                                style:const TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -936,23 +935,6 @@ class Home extends StatelessWidget {
                 ],
               ),
             ],
-          ),
-        ),
-      );
-
-  Widget buildBrand(Brands model) => Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          //  height:200, width: 300,
-          color: Colors.grey[100],
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Image(
-              image: AssetImage(model.image),
-              //fit: BoxFit.cover,
-              //height: 100,
-              width: 150,
-            ),
           ),
         ),
       );
