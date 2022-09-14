@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/modules/about_us/about.dart';
+import 'package:multikart/modules/help/help.dart';
 import 'package:multikart/modules/products/Product.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
@@ -107,7 +108,13 @@ class Layout extends StatelessWidget {
                     navigateTo(context, const AboutUs());
                   },
                 ),
-
+                ListTile(
+                  title: const Text('Help Center'),
+                  leading: const Icon(Icons.help),
+                  onTap: () {
+                    navigateTo(context, const Help());
+                  },
+                ),
               ],
             ),
           ),
