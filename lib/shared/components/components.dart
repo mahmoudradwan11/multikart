@@ -62,10 +62,10 @@ Widget textField({
       decoration: InputDecoration(
         labelText: label,
         labelStyle: labelStyle,
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: defaultColor),
-          borderRadius: BorderRadius.circular(30),
-        ),
+        //border: OutlineInputBorder(),
+        //   borderSide: const BorderSide(color: defaultColor),
+        //   borderRadius: BorderRadius.circular(30),
+        // ),
         prefixIcon: Icon(
           prefix,
         ),
@@ -93,6 +93,7 @@ Widget defButton({
   double heigth = 40.0,
   var background = defaultColor,
   bool isUpper = true,
+  var color = Colors.white,
   required var function,
   required String text,
 }) =>
@@ -107,8 +108,8 @@ Widget defButton({
         onPressed: function,
         child: Text(
           isUpper ? text.toUpperCase() : text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: color,
           ),
         ),
       ),
