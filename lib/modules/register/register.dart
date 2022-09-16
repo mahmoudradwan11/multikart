@@ -57,7 +57,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           child: Neumorphic(
                             style: const NeumorphicStyle(
-                              depth: 5,
+                              depth: 3,
                               shadowLightColor: defaultColor,
                               shadowDarkColor: defaultColor,
                               color: Colors.white,
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           child: Neumorphic(
                             style: const NeumorphicStyle(
-                              depth: 5,
+                              depth: 3,
                               shadowLightColor: defaultColor,
                               shadowDarkColor: defaultColor,
                               color: Colors.white,
@@ -117,7 +117,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           child: Neumorphic(
                             style: const NeumorphicStyle(
-                              depth: 5,
+                              depth: 3,
                               shadowLightColor: defaultColor,
                               shadowDarkColor: defaultColor,
                               color: Colors.white,
@@ -151,7 +151,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           child: Neumorphic(
                             style: const NeumorphicStyle(
-                              depth: 5,
+                              depth: 3,
                               shadowLightColor: defaultColor,
                               shadowDarkColor: defaultColor,
                               color: Colors.white,
@@ -179,7 +179,7 @@ class RegisterScreen extends StatelessWidget {
                           const LinearProgressIndicator(),
                         Neumorphic(
                           style: const NeumorphicStyle(
-                            depth: 5,
+                            depth: 3,
                             shadowLightColor: defaultColor,
                             shadowDarkColor: defaultColor,
                             color: Colors.white,

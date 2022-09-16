@@ -9,7 +9,6 @@ import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
 import 'package:multikart/shared/network/local/cache_helper.dart';
 import 'package:multikart/shared/styles/themes.dart';
-
 import 'modules/login/login.dart';
 
 void main() async {
