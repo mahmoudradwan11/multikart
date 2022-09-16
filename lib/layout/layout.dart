@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/modules/about_us/about.dart';
 import 'package:multikart/modules/help/help.dart';
 import 'package:multikart/modules/products/Product.dart';
+import 'package:multikart/modules/wish/wish.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
@@ -46,17 +47,21 @@ class Layout extends StatelessWidget {
               Container(
                   width: 40,
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: (){},
                       icon: const Icon(Icons.notification_important_rounded))),
               Container(
                   width: 40,
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: (){
+                        navigateTo(context,const Wish());
+                      },
                       icon: const Icon(Icons.favorite_border))),
               Container(
                   width: 40,
                   child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.shopping_cart))),
+                      onPressed: () {
+                        navigateTo(context,const CardScreen());
+                      }, icon: const Icon(Icons.shopping_cart))),
             ],
           ),
           drawer: Drawer(
