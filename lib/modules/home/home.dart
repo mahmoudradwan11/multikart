@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multikart/models/featured/featured.dart';
+import 'package:multikart/models/picks/picks.dart';
+import 'package:multikart/models/rated/rated.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/shared/components/components.dart';
@@ -142,7 +145,7 @@ class Home extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      'Pink Hoodie t-shirt full',
+                                      'Pink-Shirt',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17,
@@ -152,7 +155,7 @@ class Home extends StatelessWidget {
                                       height: 10,
                                     ),
                                     const Text(
-                                      'by Mango',
+                                      'by Amazon',
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.grey,
@@ -164,7 +167,7 @@ class Home extends StatelessWidget {
                                     Row(
                                       children: const [
                                         Text(
-                                          '\$32.00',
+                                          '\$100.00',
                                           style: TextStyle(
                                             // fontWeight: FontWeight.bold,
                                             color: Colors.black,
@@ -174,7 +177,7 @@ class Home extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          '\$35.00',
+                                          '\$130.00',
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.lineThrough,
@@ -185,7 +188,7 @@ class Home extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          '20%',
+                                          '30%',
                                           style: TextStyle(
                                               color: Colors.deepOrange),
                                         ),
@@ -233,7 +236,7 @@ class Home extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const Text(
-                                      'Man Blue Denim Jacket',
+                                      'Jacket',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -242,7 +245,7 @@ class Home extends StatelessWidget {
                                       height: 10,
                                     ),
                                     const Text(
-                                      'by Zara',
+                                      'Noon',
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.grey,
@@ -254,7 +257,7 @@ class Home extends StatelessWidget {
                                     Row(
                                       children: const [
                                         Text(
-                                          '\$32.00',
+                                          '\$230.00',
                                           style: TextStyle(
                                             // fontWeight: FontWeight.bold,
                                             color: Colors.black,
@@ -264,7 +267,18 @@ class Home extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          'SAVE 20%',
+                                          '\$290.00',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          '25%',
                                           style: TextStyle(
                                               color: Colors.deepOrange),
                                         ),
@@ -312,7 +326,7 @@ class Home extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const Text(
-                                      'Pink Hoodie t-shirt full',
+                                      'Orange hat',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -333,7 +347,7 @@ class Home extends StatelessWidget {
                                     Row(
                                       children: const [
                                         Text(
-                                          '\$32.00',
+                                          '\$50.00',
                                           style: TextStyle(
                                             // fontWeight: FontWeight.bold,
                                             color: Colors.black,
@@ -343,7 +357,7 @@ class Home extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          '\$35.00',
+                                          '\$75.00',
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.lineThrough,
@@ -354,7 +368,7 @@ class Home extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          '20%',
+                                          '33%',
                                           style: TextStyle(
                                               color: Colors.deepOrange),
                                         ),
@@ -464,9 +478,9 @@ class Home extends StatelessWidget {
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(
-                                      cubit.trendItem.length,
+                                      cubit.pickItem.length,
                                       (index) =>
-                                          trendBuild(cubit.trendItem[index])),
+                                          picksBuild(cubit.pickItem[index])),
                                 ),
                               ),
                             ),
@@ -497,9 +511,9 @@ class Home extends StatelessWidget {
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(
-                                      cubit.trendItem.length,
-                                      (index) =>
-                                          trendBuild(cubit.trendItem[index])),
+                                      cubit.featuredItem.length,
+                                      (index) => featuredBuild(
+                                          cubit.featuredItem[index])),
                                 ),
                               ),
                             ),
@@ -532,44 +546,9 @@ class Home extends StatelessWidget {
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(
-                                      cubit.trendItem.length,
+                                      cubit.ratedItem.length,
                                       (index) =>
-                                          trendBuild(cubit.trendItem[index])),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              child: defButton(
-                                function: () {},
-                                text: 'Ready to Ship',
-                                isUpper: false,
-                                width: 150,
-                                // background: Colors.grey[300],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
-                              child: Container(
-                                color: Colors.grey[40],
-                                child: GridView.count(
-                                  childAspectRatio: 1 / 1.6,
-                                  mainAxisSpacing: 1.0,
-                                  crossAxisSpacing: 1.0,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  crossAxisCount: 2,
-                                  children: List.generate(
-                                      cubit.trendItem.length,
-                                      (index) =>
-                                          trendBuild(cubit.trendItem[index])),
+                                          ratedBuild(cubit.ratedItem[index])),
                                 ),
                               ),
                             ),
@@ -834,6 +813,324 @@ class Home extends StatelessWidget {
       );
 
   Widget trendBuild(TrendItem model) => InkWell(
+        onTap: () {},
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.topEnd,
+                children: [
+                  Image(
+                    image: AssetImage(model.image),
+                    width: double.infinity,
+                    height: 190.0,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Icon(Icons.favorite_border),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          model.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 14.0, height: 1.3),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: const [
+                        Text(
+                          '\$32.00',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '\$35.00',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '20%',
+                          style: TextStyle(color: Colors.deepOrange),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget picksBuild(PickItem model) => InkWell(
+        onTap: () {},
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.topEnd,
+                children: [
+                  Image(
+                    image: AssetImage(model.image),
+                    width: double.infinity,
+                    height: 190.0,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Icon(Icons.favorite_border),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          model.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 14.0, height: 1.3),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: const [
+                        Text(
+                          '\$32.00',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '\$35.00',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '20%',
+                          style: TextStyle(color: Colors.deepOrange),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget ratedBuild(RatedItem model) => InkWell(
+        onTap: () {},
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.topEnd,
+                children: [
+                  Image(
+                    image: AssetImage(model.image),
+                    width: double.infinity,
+                    height: 190.0,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Icon(Icons.favorite_border),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          model.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 14.0, height: 1.3),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: const [
+                        Text(
+                          '\$32.00',
+                          style: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '\$35.00',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          '20%',
+                          style: TextStyle(color: Colors.deepOrange),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+
+  Widget featuredBuild(FeaturedItem model) => InkWell(
         onTap: () {},
         child: Container(
           color: Colors.white,

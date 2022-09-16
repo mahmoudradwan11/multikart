@@ -2,7 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/models/brands/brands.dart';
+import 'package:multikart/models/featured/featured.dart';
+import 'package:multikart/models/picks/picks.dart';
 import 'package:multikart/models/product_model/product_model.dart';
+import 'package:multikart/models/rated/rated.dart';
 import 'package:multikart/models/top_cate/top.dart';
 import 'package:multikart/models/trend/trend.dart';
 import 'package:multikart/models/user/user.dart';
@@ -89,11 +92,30 @@ class MulikartCubit extends Cubit<MultikartStates> {
     TopCate('Men', 'images/men.png'),
   ];
   List<TrendItem> trendItem = [
-    TrendItem('Blue Denim Jacket', 'images/4.jpg'),
-    TrendItem('orange SweetShirt', 'images/5.jpg'),
-    TrendItem('orange dress', 'images/6.jpg'),
-    TrendItem('Green SweetShirt', 'images/7.jpg'),
+    TrendItem('Pullover', 'images/4.jpg'),
+    TrendItem('Sweet-Shirt', 'images/5.jpg'),
+    TrendItem('Dress', 'images/6.jpg'),
+    TrendItem('Sweet-Shirt', 'images/7.jpg'),
   ];
+  List<RatedItem> ratedItem = [
+    RatedItem('Sweet-Shirt', 'images/7.jpg'),
+    RatedItem('Pullover', 'images/4.jpg'),
+    RatedItem('Sweet-Shirt', 'images/5.jpg'),
+    RatedItem('Dress', 'images/6.jpg'),
+  ];
+  List<FeaturedItem> featuredItem = [
+    FeaturedItem('Dress', 'images/6.jpg'),
+    FeaturedItem('Sweet-Shirt', 'images/7.jpg'),
+    FeaturedItem('Pullover', 'images/4.jpg'),
+    FeaturedItem('Sweet-Shirt', 'images/5.jpg'),
+  ];
+  List<PickItem> pickItem = [
+    PickItem('Sweet-Shirt', 'images/5.jpg'),
+    PickItem('Dress', 'images/6.jpg'),
+    PickItem('Sweet-Shirt', 'images/7.jpg'),
+    PickItem('Pullover', 'images/4.jpg'),
+  ];
+
   List<Brands> brandItem = [
     Brands('images/b6.png'),
     Brands('images/b2.png'),
