@@ -61,7 +61,9 @@ class Layout extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {
                         navigateTo(context,const CardScreen());
-                      }, icon: const Icon(Icons.shopping_cart))),
+                      }, icon: const Icon(Icons.shopping_cart),
+                  ),
+              ),
             ],
           ),
           drawer: Drawer(
