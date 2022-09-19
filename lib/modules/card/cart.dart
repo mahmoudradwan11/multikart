@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multikart/modules/apply_coupon/apply_coupon.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
@@ -114,7 +115,9 @@ class CardScreen extends StatelessWidget {
                             const Text('Coupon Discount',style: TextStyle(color: Colors.grey,fontSize: 15),),
                             const Spacer(),
                             InkWell(
-                                onTap: (){},
+                                onTap: (){
+                                  navigateTo(context,const ApplyCoupon());
+                                },
                                 child:const Text('Apply Coupon',style: TextStyle(color: Colors.deepOrange,fontSize: 15),)),
                           ],
                         ),

@@ -32,160 +32,176 @@ class LoginScreen extends StatelessWidget {
       }, builder: (context, state) {
         var cubit = LoginCubit.get(context);
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            backgroundColor: defaultColor,
+          ),
+          backgroundColor: defaultColor,
           body: Center(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('LOGIN',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1!
-                              .copyWith(fontSize: 30)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text('Login Now',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Colors.grey,
-                                  )),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Neumorphic(
-                          style: const NeumorphicStyle(
-                            depth: 3,
-                            shadowLightColor: defaultColor,
-                            shadowDarkColor: defaultColor,
-                            color: Colors.white,
-                          ),
-                          child: textField(
-                            labelStyle: Theme.of(context).textTheme.subtitle1,
-                            show: false,
-                            controller: emailController,
-                            keyboard: TextInputType.emailAddress,
-                            valid: (value) {
-                              if (value.isEmpty) {
-                                return 'Email Must not be Empty';
-                              }
-                              return null;
-                            },
-                            label: 'Email Address',
-                            prefix: Icons.email_outlined,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Neumorphic(
-                          style: const NeumorphicStyle(
-                            depth: 3,
-                            shadowLightColor: defaultColor,
-                            shadowDarkColor: defaultColor,
-                            color: Colors.white,
-                          ),
-                          child: textField(
-                            labelStyle: Theme.of(context).textTheme.subtitle1,
-                            show: cubit.passwordShow,
-                            suffix: cubit.suffixIcon,
-                            suffixPress: () {
-                              cubit.changePasswordIcon();
-                            },
-                            controller: passwordController,
-                            keyboard: TextInputType.visiblePassword,
-                            valid: (value) {
-                              if (value.isEmpty) {
-                                return 'Password is to short';
-                              }
-                              return null;
-                            },
-                            label: 'password',
-                            prefix: Icons.lock_outline,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      if (state is LoadingLogin)
-                        const LinearProgressIndicator(),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Neumorphic(
-                        style: const NeumorphicStyle(
-                          depth: 3,
-                          shadowLightColor: defaultColor,
-                          shadowDarkColor: defaultColor,
-                          color: Colors.white,
-                        ),
-                        child: defButton(
-                          function: () {
-                            if (formKey.currentState!.validate()) {
-                              cubit.loginUser(
-                                  email: emailController.text,
-                                  password: passwordController.text);
-                            }
-                          },
-                          text: 'LOGIN',
-                          color: defaultColor,
-                          isUpper: true,
-                          background: Colors.grey[100],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Don\'t have an Account?',
-                            style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                          textButton(
-                              text: 'Register ',
-                              function: () {
-                                navigateTo(context, RegisterScreen());
-                              }),
-                        ],
-                      ),
-                      Center(
+              child: Stack(
+              children:[
+                Expanded(
+                  child: Container(
+                     height: 650,
+                     width: 390,
+                    ),
+                ),
+                const Positioned(
+                  top: 50,
+                  left: 30,
+                  child: Text(
+                  'Login',style: TextStyle(color: Colors.white,fontSize: 40),
+                ),
+                ),
+                Positioned(
+                  top: 180,
+                  left: 30,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(30)
+                    ),
+                    height: 500,
+                    width: 400,
+                  ),
+                ),
+                Positioned(
+                  top: 200,
+                  left: 50,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30)
+                    ),
+                    height:450,
+                    width: 400,
+                    child:Form(
+                      key: formKey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Text('Username',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: textField(
+                                labelStyle: const TextStyle(
+                                  fontSize: 10,
+                                ),
+                                show: false,
+                                controller: emailController,
+                                keyboard: TextInputType.emailAddress,
+                                valid: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Email Must not be Empty';
+                                  }
+                                  return null;
+                                },
+                                //label: 'Email',
+                                //prefix: Icons.email_outlined,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text('Password',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: textField(
+                                labelStyle:const TextStyle(fontSize: 10),
+                                show: cubit.passwordShow,
+                                suffix: cubit.suffixIcon,
+                                suffixPress: () {
+                                  cubit.changePasswordIcon();
+                                },
+                                controller: passwordController,
+                                keyboard: TextInputType.visiblePassword,
+                                valid: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Password is to short';
+                                  }
+                                  return null;
+                                },
+                                //label: 'password',
+                                //prefix:,
+                              ),
+                            ),
                             const SizedBox(
                               height: 20,
                             ),
-                            IconButton(
-                              onPressed: () {
-                                // cubit.signInWithGoogle();
-                              },
-                              icon: const Image(
-                                image: AssetImage('images/google.png'),
-                              ),
+                            if (state is LoadingLogin)
+                              const LinearProgressIndicator(),
+                            const SizedBox(
+                              height: 10,
                             ),
-                          ],
+                            Neumorphic(
+                              style: const NeumorphicStyle(
+                                depth: 3,
+                                shadowLightColor: defaultColor,
+                                shadowDarkColor: defaultColor,
+                                color: Colors.white,
+                              ),
+                              child:
+                               defButton(
+                                  function: () {
+                                    if (formKey.currentState!.validate()) {
+                                      cubit.loginUser(
+                                          email: emailController.text,
+                                          password: passwordController.text);
+                                    }
+                                  },
+                                  text: 'LOGIN',
+                                  color: defaultColor,
+                                  isUpper: true,
+                                  background: Colors.grey[100],
+                                ),
+                              ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don\'t have an Account?',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                        textButton(
+                            text: 'Register ',
+                            function: () {
+                              navigateTo(context, RegisterScreen());
+                            }),
+                      ],
+                    ),
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        const SizedBox(
+                        height: 20,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          // cubit.signInWithGoogle();
+                        },
+                        icon: const Image(
+                          image: AssetImage('images/google.png'),
                         ),
                       ),
+                          ],
+                  ),
+                      ),
                     ],
+                    ),
+                ),
+                ),
                   ),
                 ),
+              ],
               ),
             ),
           ),
@@ -194,3 +210,5 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+

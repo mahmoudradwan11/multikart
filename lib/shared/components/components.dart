@@ -45,8 +45,8 @@ Widget textField({
   required TextEditingController controller,
   required TextInputType keyboard,
   required var valid,
-  required String label,
-  required IconData prefix,
+  String? label,
+  IconData? prefix,
   //IconData? suffix,
   bool show = true,
   var tap,
@@ -62,10 +62,6 @@ Widget textField({
       decoration: InputDecoration(
         labelText: label,
         labelStyle: labelStyle,
-        //border: OutlineInputBorder(),
-        //   borderSide: const BorderSide(color: defaultColor),
-        //   borderRadius: BorderRadius.circular(30),
-        // ),
         prefixIcon: Icon(
           prefix,
         ),
