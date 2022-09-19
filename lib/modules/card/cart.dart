@@ -37,20 +37,213 @@ class CardScreen extends StatelessWidget {
               title: const Text('My Card'),
               centerTitle: true,
             ),
-            body: ListView.separated(
-                itemBuilder: (context, index) =>
-                    builtCardItem(card[index], context),
-                separatorBuilder: (context, index) => builtDivider(),
-                itemCount: card.length),
+            body:Padding(
+              padding: const EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListView.separated(
+                      shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => builtCardItem(card[index], context),
+                        separatorBuilder: (context, index) => builtDivider(),
+                        itemCount: card.length),
+                    const Text(
+                      'Coupons:',style: TextStyle(
+                      fontFamily: 'Jannah',
+                      fontSize: 20,
+                    ),
+                    ),
+                    Container(
+                      color: Colors.grey[200],
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Apply Coupon',
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            prefixIcon: Icon(Icons.discount),
+                            suffixIcon: Icon(Icons.arrow_forward_ios),
+                          ),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      'OrderDetails:',style: TextStyle(
+                      fontFamily: 'Jannah',
+                      fontSize: 20,
+                    ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          children:[
+                            const Text('Bag Total',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                            const Spacer(),
+                            Text('\$${cubit.card[0]['oldPrice']}',style:const TextStyle(color: Colors.black,fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children:[
+                            const Text('Bag savings',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                            const Spacer(),
+                            Text('\$${cubit.card[0]['oldPrice']-cubit.card[0]['price'
+                            ]}',style:const TextStyle(color: Colors.black,fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children:[
+                            const Text('Coupon Discount',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                            const Spacer(),
+                            InkWell(
+                                onTap: (){},
+                                child:const Text('Apply Coupon',style: TextStyle(color: Colors.deepOrange,fontSize: 15),)),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children:const[
+                             Text('Delivery',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                             Spacer(),
+                             Text('\$50',style:TextStyle(color: Colors.black,fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          height: 1,
+                          color: Colors.grey[200],
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children:[
+                            const Text('Total',style: TextStyle(color: Colors.grey,fontSize: 15),),
+                            const Spacer(),
+                            Text('\$${cubit.card[0]['price']+50}',style:const TextStyle(color: Colors.black,fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: 50,
+                          color: Colors.grey[200],
+                          child: Row(
+                            children:const[
+                              Icon(Icons.note),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text('No Delivery Charges applied on this order',style: TextStyle(
+                                fontFamily: 'Jannah',
+                              ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: 100,
+                          color: Colors.white,
+                          child: Center(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children:const[
+                                      Icon(Icons.assignment_return,size: 50,),
+                                      Text('Return',style: TextStyle(fontWeight: FontWeight.bold,fontFamily:'Jannah'))
+                                    ],
+                                  ),
+                                ), 
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children:const[
+                                      Icon(Icons.call,size: 50,),
+                                      Text('support',style: TextStyle(fontWeight: FontWeight.bold,fontFamily:'Jannah'))
+                                    ],
+                                  ),
+                                ), 
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children:const[
+                                      Icon(Icons.payment,size: 50,),
+                                      Text('Payment',style: TextStyle(fontWeight: FontWeight.bold,fontFamily:'Jannah'),)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: 50,
+                         color: Colors.grey[100],
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('\$${cubit.card[0]['price']+50}.00',style:const TextStyle(color: Colors.black,fontSize: 20)
+                                    ),
+                                    InkWell(
+                                      child: const Text('View Details',style: TextStyle(color: defaultColor),),
+                                      onTap:(){},
+                                    )
+                                  ],
+                                ),
+                              ), 
+                              Expanded(child: defButton(function:(){}, text:'Place Order',width: 100))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
           );
         }
       },
     );
   }
 
-  Widget builtCardItem(Map model, context) => Padding(
-    padding: const EdgeInsets.all(10.0),
-    child: Stack(
+  Widget builtCardItem(Map model, context) => Stack(
       alignment: AlignmentDirectional.topEnd,
       children: [
         Container(
@@ -165,6 +358,5 @@ class CardScreen extends StatelessWidget {
           ),
         ),
       ],
-    ),
   );
 }

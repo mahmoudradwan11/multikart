@@ -78,35 +78,29 @@ class MulikartCubit extends Cubit<MultikartStates> {
     ProductModel('Pocket', 'Shi In', 'images/9.jpg', 120, 165),
   ];
   List<TopCate> topCate = [
-    TopCate(
-      'Kids',
-      'images/kids.png',
-    ),
+    TopCate('Kids', 'images/kids.png',),
     TopCate('Beauty', 'images/beauty.png'),
-    TopCate(
-      'Footwear',
-      'images/shoes.png',
-    ),
+    TopCate('Footwear', 'images/shoes.png',),
     TopCate('Jewelry', 'images/jewelry.png'),
     TopCate('Women', 'images/women.png'),
     TopCate('Men', 'images/men.png'),
   ];
   List<TrendItem> trendItem = [
-    TrendItem('Pullover', 'images/4.jpg'),
-    TrendItem('Sweet-Shirt', 'images/5.jpg'),
+    TrendItem('Pocket','images/9.jpg'),
+    TrendItem('Kids Collection','images/8.jpg'),
+    TrendItem('Sweet-Shirt','images/7.jpg'),
     TrendItem('Dress', 'images/6.jpg'),
-    TrendItem('Sweet-Shirt', 'images/7.jpg'),
   ];
   List<RatedItem> ratedItem = [
-    RatedItem('Sweet-Shirt', 'images/7.jpg'),
-    RatedItem('Pullover', 'images/4.jpg'),
     RatedItem('Sweet-Shirt', 'images/5.jpg'),
-    RatedItem('Dress', 'images/6.jpg'),
+    RatedItem('Pullover', 'images/4.jpg'),
+    RatedItem('Orange hat ', 'images/3.jpg'),
+    RatedItem('Jacket', 'images/2.jpg'),
   ];
   List<FeaturedItem> featuredItem = [
-    FeaturedItem('Dress', 'images/6.jpg'),
+    FeaturedItem('Pink-Shirt', 'images/1.jpg'),
     FeaturedItem('Sweet-Shirt', 'images/7.jpg'),
-    FeaturedItem('Pullover', 'images/4.jpg'),
+    FeaturedItem('Dress', 'images/6.jpg'),
     FeaturedItem('Sweet-Shirt', 'images/5.jpg'),
   ];
   List<PickItem> pickItem = [
@@ -317,7 +311,6 @@ class MulikartCubit extends Cubit<MultikartStates> {
       emit(ErrorGetCardState());
     });
   }
-
   void deleteCard({required int id}) async {
     await database!
         .rawDelete('DELETE FROM Card WHERE id= ?', [id]).then((value) {
