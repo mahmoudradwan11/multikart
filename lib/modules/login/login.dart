@@ -6,7 +6,6 @@ import 'package:multikart/modules/register/register.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/network/local/cache_helper.dart';
 import 'package:multikart/shared/styles/colors.dart';
-
 import 'cubit/cubit.dart';
 import 'cubit/state.dart';
 
@@ -32,14 +31,43 @@ class LoginScreen extends StatelessWidget {
       }, builder: (context, state) {
         var cubit = LoginCubit.get(context);
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: defaultColor,
-          ),
-          backgroundColor: defaultColor,
+          backgroundColor:Colors.white,
           body: Center(
             child: SingleChildScrollView(
               child: Stack(
               children:[
+                const Positioned(
+                  top:55,
+                left: -80,
+              child:CircleAvatar(
+                  radius:80,
+                  backgroundColor: defaultColor,
+                ),
+                ),
+                const Positioned(
+                  top:55,
+                  right: -80,
+                  child:CircleAvatar(
+                    radius:80,
+                    backgroundColor: defaultColor,
+                  ),
+                ),
+                const Positioned(
+                  top:55,
+                  left: 80,
+                  child:CircleAvatar(
+                    radius:40,
+                    backgroundColor: defaultColor,
+                  ),
+                ),
+                const Positioned(
+                  top:500,
+                  right: -80,
+                  child:CircleAvatar(
+                    radius:60,
+                    backgroundColor: defaultColor,
+                  ),
+                ),
                 Expanded(
                   child: Container(
                      height: 650,
@@ -47,34 +75,22 @@ class LoginScreen extends StatelessWidget {
                     ),
                 ),
                 const Positioned(
-                  top: 50,
-                  left: 30,
+                  top: 145,
+                  left: 130,
                   child: Text(
-                  'Login',style: TextStyle(color: Colors.white,fontSize: 40),
+                  'Login',style: TextStyle(color: defaultColor,fontSize: 40),
                 ),
-                ),
-                Positioned(
-                  top: 180,
-                  left: 30,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(30)
-                    ),
-                    height: 500,
-                    width: 400,
-                  ),
                 ),
                 Positioned(
                   top: 200,
-                  left: 50,
+                  left: 30,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(30)
                     ),
                     height:450,
-                    width: 400,
+                    width: 300,
                     child:Form(
                       key: formKey,
                       child: Padding(
