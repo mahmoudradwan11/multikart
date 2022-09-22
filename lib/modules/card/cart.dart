@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multikart/modules/apply_coupon/apply_coupon.dart';
+import 'package:multikart/modules/payment/payment.dart';
 import 'package:multikart/shared/components/components.dart';
 import 'package:multikart/shared/cubit/cubit.dart';
 import 'package:multikart/shared/cubit/states.dart';
@@ -230,7 +231,11 @@ class CardScreen extends StatelessWidget {
                                   ],
                                 ),
                               ), 
-                              Expanded(child: defButton(function:(){}, text:'Place Order',width: 100))
+                              Expanded(child: defButton(function:(){
+                                navigateTo(context, Payment(
+                                  price:cubit.card[0]['price']+50,
+                                ));
+                              }, text:'Place Order',width: 100))
                             ],
                           ),
                         )
