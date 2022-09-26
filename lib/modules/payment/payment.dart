@@ -35,7 +35,7 @@ class Payment extends StatelessWidget{
               ),
               buildTextForm(
                 context,
-                buttonController: visaController,
+                buttonController: addressController,
                 title: 'Address ',
                 MediaQuery.of(context).size.height * 0.07,
               ),
