@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
                 splash: logo(),
                 duration: 3000,
                 nextScreen: startWidget!,
-                splashTransition: SplashTransition.fadeTransition,
+                splashTransition: SplashTransition.scaleTransition,
                 backgroundColor: Colors.white,
                 //type: AnimatedSplashType.StaticSplashScreen,
               ),
